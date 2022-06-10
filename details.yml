@@ -1,0 +1,203 @@
+---
+name: VINCENT LEONARDO
+mainfont: Inter
+boldfont: Inter Semi Bold
+reducetracking: true
+small: true
+fontsize: 9pt
+lang: en-GB
+geometry: a4paper, margin=0.5in, bottom=0.75in
+columnratio: 0.8
+
+phone: +65 8817 0611
+email: \href{mailto:vincent@vinleonardo.com}{vincent@vinleonardo.com}
+website: \href{https://vinleonardo.com}{vinleonardo.com}
+github: \href{https://github.com/vincentleooo/}{\faGithub\ vincentleooo}
+linkedin: \href{https://www.linkedin.com/in/vincentleoooo/}{\faLinkedin\ vincentleoooo}
+
+motto: Aspiring AI engineer and front end developer
+
+about: A keen and passionate learner obsessed with anything technology related. Currently seeking a career in building models using machine learning or deep learning to assess and make decisions to make the world a better place. Particular in crafting tools and interfaces to allow for easier usage of prediction models and data visualisation. Multidisciplinary, with expertise in data science, system administration, and computer hardware as well. Enjoys collaborative work and creative problem-solving.
+
+education:
+  - year: May 2019 -- Present
+    institute: Singapore University of Technology and Design
+    degree: Bachelor of Engineering with Honours (Engineering Systems and Design)
+    description:
+      - Expected to graduate in September 2022.
+      - Focusing on Artificial Intelligence-related courses and applications.
+      - Awarded with the SUTD Undergraduate Merit Scholarship.
+  # - year: Feb 2017 -- Dec 2018
+  #   institute: Anglo-Chinese Junior College
+  #   degree: GCE Advanced Level
+  #   description:
+  #     - Part of the 42nd Students' Council and Photographic Society Executive Commmittee.
+  #     - ASEAN Scholarship holder.
+
+experience:
+  - year: May 2022 -- Present
+    company: What Is Up, Indonesia?
+    position: Newsletter Writer \& Web Developer
+    description:
+      - Working alongside three other team members on weekly email newsletters discussing Indonesian news headlines in English that reaches over 500 people.
+      - Writing and maintaining their website (\href{https://whatisupindonesia.com}{whatisupindonesia.com}) using Next.js (React) with MDX templates.
+      - Exploring content management systems to implement on the website complementing the main \href{https://www.instagram.com/whatisupindonesia/}{Instagram} page.
+  - year: May 2022 -- Present
+    company: Silver Online Service
+    position: Marketing Coordinator
+    description:
+      - Advising for the creation of the company's brand identity and design for Instagram posts and the website.
+      - Developing a landing page website to increase reach.
+  - year: May 2022 -- Present
+    company: SUTD Humanities, Arts and Social Sciences
+    position: Web Designer \& Developer
+    description:
+      - Designing the UI/UX to house film archives complementing Prof Sandeep Ray's book, \textit{Celluloid Colony}.
+      - Developing a React-based website that links to a database containing these archives.
+  - year: May 2021 -- Sep 2021
+    company: Shopee Pte Ltd
+    position: Regional Operations (Fraud) Intern
+    description:
+      - Wrangled and examined large user behaviour datasets using Python and SQL.
+      - Ideated rules that reduce instances of fraud along with their impact analyses with three other departments.
+  - year: May 2020 -- Sep 2020
+    company: SUTD DManD Centre
+    position: Composites Research Intern
+    description:
+      - Optimised composites manufacturing processes and scripted automated simulations using ANSYS.
+      - Spearheaded computer equipment purchasing decisions, saving about 30--40% of the team's budget compared to initial plans.
+
+projects:
+  - year: Jan 2022 -- Present
+    name: Gait Recognition Model and Analytics
+    company: Klass Engineering Pte Ltd
+    description:
+      - Leading a team of five from two different pillars to model unique identification of people based on their gait alone.
+      - Synthesising a pipeline from video feed to classification using React, FastAPI, OpenCV, and OpenGait models.
+  - year: Jan 2022 -- May 2022
+    name: Music Genre Classification
+    company: SUTD 50.039 Theory and Application of Deep Learning
+    description:
+      - Crafted a lightweight parallel CNN model to classify music genres using the GTZAN dataset to achieve around 80\% accuracy.
+      - Split inputs into three-second chunks, and ensembling predictions based on these chunks for unseen data of any length.
+      - Created a simple CLI application and a prototype web interface for ease-of-use.
+  - year: Oct 2021 -- Dec 2021
+    name: \href{https://github.com/vincentleooo/CDS-Project-2021}{Classification of MBTI Type Based on Past Posts on Internet Forums}
+    company: SUTD 50.038 Computational Data Science
+    description:
+      - Devised model to predict the MBTI of the PersonalityCafe forum users based on their posts within the team of three.
+      - Merged a CNN with an LSTM using PyTorch after experimentations involving SVM, logistic regression, decision trees, ensemble models, and neural networks in order to achieve an accuracy of 78% for the top six classes.
+  - year: Oct 2021 -- Dec 2021
+    name: \href{https://github.vinleonardo.com/sma-airport-model/}{Agent-Based Modelling for Airport Arrivals in a Post-Pandemic World}
+    company: SUTD 40.015 Simulations Modelling Analysis
+    description:
+      - Project highlighted for the course in the \href{https://esd.sutd.edu.sg/files/ESD-Spring-Newsletter-2022.pdf}{ESD pillar newsletter} in early 2022.
+      - Managed the team of three in designing the architecture and user experience of the simulation using d3.js.
+  # - year: Mar 2021 -- May 2021
+  #   name: "Count On It: A Financial Literacy Game"
+  #   company: SUTD
+  #   description:
+  #     - Web app deliverable for the Engineering Systems Architecture course.
+  #     - Led the technical plannings for the game architecture and the coding process.
+  - year: Mar 2021 -- May 2021
+    name: Optimisation of Pre-Surgery Assessment Appointment Slots
+    company: Singapore General Hospital Pre-Admission Centre
+    description:
+      - Partnered with client to gather and clean the appointment data over the past three years to form statistical inferences in R.
+      - Collaborated with team of four to implement the M/M/s on Excel to optimise manpower, queue time, and working hours.
+  - year: Sep 2020 -- Dec 2020
+    name: Analysis of Carsharing Usage Pattern and Utilisation
+    company: Car Club Pte Ltd
+    description:
+      - Guided a team of four to analyse the effects of COVID-19 on carsharing usage using tools such as R, SQL, Python and GIS.
+      - Wrote Python scripts to automate the sifting and analysis of four months of customer data provided in Excel format.
+      - Consulted the industry partner (Car Club) on possible measures on adapting to the new behaviours found due to COVID-19.
+
+competitions:
+  - year: Nov 2021 -- Dec 2021
+    name: \href{https://github.com/vincentleooo/analytics-edge-data-comp}{The Analytics Edge Data Competition}
+    company: SUTD 40.016 The Analytics Edge
+    description:
+      - Headed the team of two to clinch first place in terms of accuracy amongst the cohort.
+      - Applied the RoBERTa model in TensorFlow in R to secure around 96% accuracy in the sentiment classification task.
+  - year: Oct 2021 -- Nov 2021
+    name: \href{https://vinleonardo.com/synthesis-sustainable-competition-2021/}{Synthesis Sustainability IRL Data Challenge}
+    company: Synthesis & Treatsure
+    description:
+      - Directed the team of three to win third place in the data science challenge among around 135 participants.
+      - Modelled word associations and sentiments on food surplus consumption from Twitter and Instagram posts in the past five years to consult Treatsure on persuading more people to consume surplus food.
+
+teachexp:
+  - year: Jan 2022 -- May 2022
+    company: Teaching Assistant
+    name: 60.002 AI Applications in Design
+    description:
+      - Guided students in both technical aspects and design thinking using Fusion360's generative design feature.
+      - Mentored groups in their projects involving web scraping and text analysis using various Python packages.
+      - Taught Python and TensorFlow installation and debugging skills.
+  - year: Sep 2021 -- Dec 2021
+    company: Teaching Assistant
+    name: 10.020 Data Driven World
+    description:
+      - Tutored students in all the course concepts, especially in recursive concepts and data wrangling.
+      - Taught students generalisable debugging and problem-solving skills.
+
+cca:
+  - year: Feb 2021 -- Feb 2022
+    position: Chief Photographer (Previously Treasurer, 2019 -- 2021)
+    name: SUTD Photographic Circle
+    description:
+      - Oversaw the standards of the photographs sent to the clients over five major events.
+      - Spearheaded a film development workshop that was fully booked within one hour.
+  - year: Nov 2020 -- Feb 2022
+    position: Advisor, Media & Marketing (Previously Director of Creative Media, 2019 -- 2020)
+    name: SUTD 9th Student Government
+    description:
+      - Advised and assisted the Media & Marketing team of seven on student engagement projects in the university.
+      - Co-led the Mental Health Awareness Week initiative, reaching over 1000 people through videos and Telegram Stickers.
+
+acadproj:
+  - year: Sep 2020 -- Dec 2020
+    company: Undergraduate Research Opportunities Programme (UROP)
+    name: Reducing Composites Wastage Through Custom Vacuum Bag Sealing
+    description:
+      - Assisted in the prototypes and experiments using smaller and reusable custom vacuum bags for composites fabrication.
+      - Conducted IT equipment maintenance and debugging for the research team.
+  - year: Sep 2019 -- May 2020
+    company: Undergraduate Research Opportunities Programme (UROP)
+    name: Design and Fabrication of a Toggling Speaker-Microphone (Phase 3)
+    description:
+      - Assisted in the design and 3D printing of prototypes for the cones and speakers.
+      - Analysed frequency response of the signals produced using different cones and speakers.
+
+skills:
+  - Data Wrangling #Viz too?
+  - Visualisation
+  - Statistics
+  - Machine Learning
+  - Neural Networks
+  - Optimisation
+  - Simulations
+  - Research
+  - Python
+  - R\hfill
+  - JavaScript
+  - SQL
+  - Julia
+  - Tableau
+  - \LaTeX
+  - Adobe Suite
+  - Fusion 360
+  - Unity
+  - React
+  - Flask
+  - FastAPI
+
+others:
+  - Native English and Bahasa Indonesia speaker.
+  - Comfortable in Linux/Unix-based systems and shell scripting, especially in web servers and for deep learning purposes.
+  - Comfortable in maintaining, customising, and upgrading computers.
+  - Participated in the Create4Good Innovation Fund Social Venture Programme as part of Silver Online Service, a social venture to help the elderly adapt to modern technology, and was awarded $50,000 in funding for the project.
+  - Contributed to the Temasek Foundation-National University of Singapore Leadership Enrichment and Regional Networking Young Asian Leaders Initiative (2021).
+  - Enjoys history, linguistics, music, and tinkering with technology to automate various things, including this CV.
+---

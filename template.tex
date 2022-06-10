@@ -1,0 +1,333 @@
+\documentclass[$fontsize$, a4paper]{article}
+
+\usepackage{geometry}
+\geometry{$geometry$}
+\usepackage{wallpaper}
+\usepackage[hidelinks]{hyperref}
+\usepackage{paracol}
+
+% Do not indent paragraphs
+\setlength\parindent{0in}
+
+% \pagenumbering{gobble} does not work in this case.
+% Likely due to the code for the lines needing page reference numbers.
+% We use fancyhdr to modify it instead.
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt} % Prevent top line from appearing
+\rfoot{\footnotesize Page \thepage \hspace{1pt} of \pageref{LastPage}} % Format of the page numbers
+% \rfoot{} % Format of the page numbers
+
+\usepackage{multicol}
+% \usepackage{ragged2e}
+
+
+
+% TYPOGRAPHY
+%--------------------------------
+\usepackage{fontspec} 
+\usepackage{fontawesome5}
+\usepackage{xunicode}
+\usepackage{xltxtra}
+% converts LaTeX specials (quotes, dashes etc.) to Unicode
+$if(reducetracking)$
+\defaultfontfeatures{LetterSpace=-4}
+$endif$
+%\defaultfontfeatures{Mapping=tex-text}
+\setmainfont[Ligatures={Common}, BoldFont={$boldfont$}]{$mainfont$}
+% Cool ampersand
+\newcommand{\amper}{{\fontspec[Scale=.95]{$mainfont$}\selectfont\itshape\&}}
+\usepackage{setspace}
+\usepackage[inline]{enumitem}
+
+\newcommand{\middot}{~\textperiodcentered~}
+
+\setlist[itemize]{leftmargin=*} % removes margin from the itemize
+
+\newlist{hlist}{itemize*}{1}
+\setlist[hlist]{label={}, afterlabel={}, mode=unboxed,
+itemjoin=\discretionary{}{}{\hbox{\middot}}}
+
+\usepackage{lipsum,xcolor}
+\newcommand\dunderline[3][-1pt]{{%
+\sbox0{#3}%
+\ooalign{\copy0\cr\rule[\dimexpr#1-#2\relax]{\wd0}{#2}}}}
+
+% LANGUAGE
+%--------------------------------
+% Set the main language for formatting purposes, just in case.
+$if(lang)$
+\usepackage{polyglossia}
+\setmainlanguage{$lang$}
+$endif$
+
+
+% LINES BETWEEN ITEMS
+%--------------------------------
+\usepackage{tikz,tikzpagenodes}
+\usetikzlibrary{calc}
+\usepackage{refcount}
+
+\newcounter{mylist} % new counter for amount of lists
+\newcounter{mycnt}[mylist] % create new item counter
+\newcounter{mytmp}[mylist] % tmp counter needed for checking before/after current item
+
+\newcommand{\drawoptionsconn}{black, shorten <= .5mm, shorten >= .5mm, thick}
+\newcommand{\drawoptionsshort}{black, shorten <= .5mm, shorten >= -1mm, thick}
+
+\newcommand{\myitem}{% Modified `\item` to update counter and save nodes
+	\stepcounter{mycnt}%
+	\item[\linkedlist{%
+		i\alph{mylist}\arabic{mycnt}}]%
+	\label{item-\alph{mylist}\arabic{mycnt}}%
+	\ifnum\value{mycnt}>1%
+	\ifnum\getpagerefnumber{item-\alph{mylist}\arabic{mytmp}}<\getpagerefnumber{item-\alph{mylist}\arabic{mycnt}}%
+	\begin{tikzpicture}[remember picture,overlay]%
+		\expandafter\draw\expandafter[\drawoptionsshort] (i\alph{mylist}\arabic{mycnt}) --
+		++(0,3mm) --
+		(i\alph{mylist}\arabic{mycnt} |- current page text area.north);% draw short line
+	\end{tikzpicture}%
+	\else%
+	\begin{tikzpicture}[remember picture,overlay]%
+		\expandafter\draw\expandafter[\drawoptionsconn] (i\alph{mylist}\arabic{mytmp}) -- (i\alph{mylist}\arabic{mycnt});% draw the connecting lines
+	\end{tikzpicture}%
+	\fi%
+	\fi%
+	\addtocounter{mytmp}{2}%
+	\IfRefUndefinedExpandable{item-\alph{mylist}\arabic{mytmp}}{}{% defined
+		\ifnum\getpagerefnumber{item-\alph{mylist}\arabic{mytmp}}>\getpagerefnumber{item-\alph{mylist}\arabic{mycnt}}%
+		\begin{tikzpicture}[remember picture,overlay]%
+			\expandafter\draw\expandafter[\drawoptionsshort] (i\alph{mylist}\arabic{mycnt}) --
+			++(0,-3mm) --
+			(i\alph{mylist}\arabic{mycnt} |- current page text area.south);% draw short line
+		\end{tikzpicture}%
+		\fi%
+	}%
+	\addtocounter{mytmp}{-1}%
+}
+
+\newcommand{\linkedlist}[1]{
+	\raisebox{1.5pt}[0pt][0pt]{\begin{tikzpicture}[remember picture]%
+			\node (#1) [black,circle,fill,inner sep=1.5pt]{};
+	\end{tikzpicture}}%
+}
+
+\newenvironment{myitemize}{%
+	% Create new `myitemize` environment to keep track of the counters
+	\stepcounter{mylist}% increment list counter
+	\begin{itemize}
+	}{\end{itemize}%
+}
+
+\newcommand{\titleheader}[1]{{\defaultfontfeatures{LetterSpace=0}\setmainfont{Futura} \textcolor{black} {\huge\textbf{#1}\vspace{2pt}}}}
+\newcommand{\heading}[1]{{\defaultfontfeatures{LetterSpace=0}\setmainfont{Futura} \textcolor{black} {\dunderline[-3pt]{2pt}{\small \textbf{#1}}}}}
+\newcommand{\itemheading}[1]{{\defaultfontfeatures{LetterSpace=-2}\setmainfont{Futura} \small \textbf{#1}}}
+\newcommand{\subheading}[1]{{\defaultfontfeatures{LetterSpace=-3}\setmainfont{Futura} \small \textit{#1}}}
+\newcommand{\monthyear}[1]{{\defaultfontfeatures{LetterSpace=-3}\setmainfont{Futura} \small #1}}
+\newcommand{\motto}[1]{{\defaultfontfeatures{LetterSpace=-3}\setmainfont{Futura} \small #1}}
+
+\hypersetup{
+pdftitle={Vincent Leonardo's Curriculum Vitae},
+pdfsubject={Curriculum Vitae},
+pdfauthor={Vincent Leonardo},
+}
+
+
+\begin{document}
+\columnratio{$columnratio$}
+
+$if(name)$
+\titleheader{$name$}\\
+$endif$
+$if(motto)$
+\motto{$motto$}
+\smallbreak
+$endif$
+
+\begin{hlist}
+	{ $if(small)$\footnotesize $endif$
+		$if(phone)$
+		\item $phone$
+		$endif$
+
+		$if(email)$
+		\item $email$
+		$endif$
+
+		$if(website)$
+		\item $website$
+		$endif$
+
+		$if(github)$
+		\item $github$
+		$endif$
+
+		$if(linkedin)$
+		\item $linkedin$
+		$endif$
+	}
+\end{hlist}
+
+\vspace{0.2in}
+
+$if(about)$
+\heading{ABOUT}
+\medbreak
+\vspace{1pt}
+{$if(small)$\small $endif$$about$}
+
+\vspace{0.2in}
+$endif$
+
+$if(education)$
+\heading{EDUCATION}
+\smallbreak
+\vspace{2pt}
+\begin{myitemize}[topsep=0ex, labelsep=0.1in]
+	$for(education)$
+	\begin{paracol}{2}\myitem\itemheading{$education.institute$}\\\subheading{$education.degree$}\switchcolumn{\vspace*{5pt}\small\monthyear{Singapore}\\\monthyear{$education.year$}}\end{paracol}
+	\begin{itemize}[itemsep=-0.4ex, topsep=-0.4ex]
+		$for(education.description)$
+		\item {$if(small)$\small $endif$$education.description$}
+		$endfor$
+	\end{itemize}
+	$endfor$
+\end{myitemize}
+
+\vspace{0.16in}
+$endif$
+
+$if(experience)$
+\heading{EXPERIENCE}
+\smallbreak
+\vspace{2pt}
+\begin{myitemize}[topsep=0ex, labelsep=0.1in]
+	$for(experience)$
+	\begin{paracol}{2}\myitem\itemheading{$experience.company$}\\\subheading{$experience.position$}\switchcolumn{\vspace*{5pt}\monthyear{Singapore}\\\monthyear{$experience.year$}}\end{paracol}
+	\begin{itemize}[itemsep=-0.4ex, topsep=-0.4ex]
+		$for(experience.description)$
+		\item {$if(small)$\small $endif$$experience.description$}
+		$endfor$
+	\end{itemize}
+	$endfor$
+\end{myitemize}
+
+\vspace{0.16in}
+$endif$
+
+$if(competitions)$
+\heading{COMPETITIONS}
+\smallbreak
+\vspace{2pt}
+\begin{myitemize}[topsep=0pt, labelsep=0.1in]
+	$for(competitions)$
+	\begin{paracol}{2}\myitem\itemheading{$competitions.name$}\\\subheading{$competitions.company$}\switchcolumn{\item[]\monthyear{Singapore}\\\monthyear{$competitions.year$}}\end{paracol}
+	\begin{itemize}[itemsep=-0.4ex, topsep=-0.4ex]
+		$for(competitions.description)$
+		\item {$if(small)$\small $endif$$competitions.description$}
+		$endfor$
+	\end{itemize}
+	$endfor$
+\end{myitemize}
+
+\vspace{0.16in}
+$endif$
+
+$if(projects)$
+\heading{PROJECTS}
+\smallbreak
+\vspace{2pt}
+\begin{myitemize}[topsep=0pt, labelsep=0.1in]
+	$for(projects)$
+	\begin{paracol}{2}\myitem\itemheading{$projects.name$}\\\subheading{$projects.company$}\switchcolumn{\item[]\monthyear{Singapore}\\\monthyear{$projects.year$}}\end{paracol}
+	\begin{itemize}[itemsep=-0.4ex, topsep=-0.4ex]
+		$for(projects.description)$
+		\item {$if(small)$\small $endif$$projects.description$}
+		$endfor$
+	\end{itemize}
+	$endfor$
+\end{myitemize}
+
+\vspace{0.16in}
+$endif$
+
+$if(teachexp)$
+\heading{TEACHING EXPERIENCE}
+\smallbreak
+\vspace{2pt}
+\begin{myitemize}[topsep=0pt, labelsep=0.1in]
+	$for(teachexp)$
+	\begin{paracol}{2}\myitem\itemheading{$teachexp.name$}\\\subheading{$teachexp.company$}\switchcolumn{\item[]\monthyear{Singapore}\\\monthyear{$teachexp.year$}}\end{paracol}
+	\begin{itemize}[itemsep=-0.4ex, topsep=-0.4ex]
+		$for(teachexp.description)$
+		\item {$if(small)$\small $endif$$teachexp.description$}
+		$endfor$
+	\end{itemize}
+	$endfor$
+\end{myitemize}
+
+\vspace{0.16in}
+$endif$
+
+$if(acadproj)$
+\heading{ACADEMIC PROJECTS}
+\smallbreak
+\vspace{2pt}
+\begin{myitemize}[topsep=0pt, labelsep=0.1in]
+	$for(acadproj)$
+	\begin{paracol}{2}\myitem\itemheading{$acadproj.name$}\\\subheading{$acadproj.company$}\switchcolumn{\item[]\monthyear{Singapore}\\\monthyear{$acadproj.year$}}\end{paracol}
+	\begin{itemize}[itemsep=-0.4ex, topsep=-0.4ex]
+		$for(acadproj.description)$
+		\item {$if(small)$\small $endif$$acadproj.description$}
+		$endfor$
+	\end{itemize}
+	$endfor$
+\end{myitemize}
+
+\vspace{0.16in}
+$endif$
+\newpage
+
+$if(cca)$
+\heading{CO-CURRICULAR ACTIVITIES}
+\smallbreak
+\vspace{2pt}
+\begin{myitemize}[topsep=0pt, labelsep=0.1in]
+	$for(cca)$
+	\begin{paracol}{2}\myitem\itemheading{$cca.name$}\\\subheading{$cca.position$}\switchcolumn{\item[]\monthyear{Singapore}\\\monthyear{$cca.year$}}\end{paracol}
+	\begin{itemize}[itemsep=-0.4ex, topsep=-0.4ex]
+		$for(cca.description)$
+		\item {$if(small)$\small $endif$$cca.description$}
+		$endfor$
+	\end{itemize}
+	$endfor$
+\end{myitemize}
+
+\vspace{0.16in}
+$endif$
+
+$if(hlist)$
+\heading{SKILLS \& TOOLS}
+\medbreak
+\vspace*{1pt}
+\begin{hlist}
+	$for(hlist)$
+	\item {$if(small)$\small $endif$$hlist$}
+	$endfor$
+\end{hlist}
+$endif$
+
+\vspace*{0.2in}
+
+$if(others)$
+\heading{ADDITIONAL INFORMATION}
+\begin{itemize}[itemsep=-0.4ex]
+	$for(others)$
+	\item {$if(small)$\small $endif$$others$}
+	$endfor$
+\end{itemize}
+$endif$
+
+\end{document}
